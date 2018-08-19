@@ -79,15 +79,20 @@
 
 
 
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;String类型作为JS的基本类型之一,是平日里构成代码结构的重要组成之一,在使用过程中,常常作为显式或者隐式的被转换类型,通过原生的API进行一些别致的处理,例如字符串反转。它被存储于栈内存中,这导致着我们可以直接操作在变量中的值,也就是按值访问。但是需要注意的是字符串的成员函数并不能更改原始值,往往是创建并返回一个新字符串,这在下面的API">
 <meta name="keywords" content="前端,javascript基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【前端】我应该要知道的string">
+<meta property="og:title" content="【前端 】我应该要知道的string">
 <meta property="og:url" content="http://yoursite.com/2018/08/11/【前端】我应该要知道的string/index.html">
 <meta property="og:site_name" content="一期一会">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;String类型作为JS的基本类型之一,是平日里构成代码结构的重要组成之一,在使用过程中,常常作为显式或者隐式的被转换类型,通过原生的API进行一些别致的处理,例如字符串反转。它被存储于栈内存中,这导致着我们可以直接操作在变量中的值,也就是按值访问。但是需要注意的是字符串的成员函数并不能更改原始值,往往是创建并返回一个新字符串,这在下面的API">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:18:59.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/11/【前端】我应该要知道的string/string-1.jpg">
+<meta property="og:updated_time" content="2018-08-19T15:23:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【前端】我应该要知道的string">
+<meta name="twitter:title" content="【前端 】我应该要知道的string">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;String类型作为JS的基本类型之一,是平日里构成代码结构的重要组成之一,在使用过程中,常常作为显式或者隐式的被转换类型,通过原生的API进行一些别致的处理,例如字符串反转。它被存储于栈内存中,这导致着我们可以直接操作在变量中的值,也就是按值访问。但是需要注意的是字符串的成员函数并不能更改原始值,往往是创建并返回一个新字符串,这在下面的API">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/11/【前端】我应该要知道的string/string-1.jpg">
 
 
 
@@ -123,7 +128,7 @@
 
 
 
-  <title>【前端】我应该要知道的string | 一期一会</title>
+  <title>【前端 】我应该要知道的string | 一期一会</title>
   
 
 
@@ -279,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【前端】我应该要知道的string</h1>
+          <h1 class="post-title" itemprop="name headline">【前端 】我应该要知道的string</h1>
         
 
         <div class="post-meta">
@@ -341,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  960
                 </span>
               
 
@@ -357,7 +362,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -378,7 +383,51 @@
       
 
       
-        
+        <p>&#160; &#160; &#160; &#160;String类型作为JS的基本类型之一,是平日里构成代码结构的重要组成之一,在使用过程中,常常作为显式或者隐式的被转换类型,通过原生的API进行一些别致的处理,例如字符串反转。它被存储于<strong>栈内存</strong>中,这导致着我们可以直接操作在变量中的值,也就是<strong>按值访问</strong>。但是需要注意的是字符串的成员函数并不能更改原始值,<strong>往往是创建并返回一个新字符串</strong>,这在下面的API中可以看到。<br>首先说一下属性。</p>
+<h2 id="属性-部分来源于-MDN"><a href="#属性-部分来源于-MDN" class="headerlink" title="属性 部分来源于 MDN"></a>属性 部分来源于 MDN</h2><blockquote>
+<p>String.prototype 返回了字符串的原型。</p>
+<blockquote>
+<p>String.prototype.constructor 用于创造对象的原型对象的特定的函数。<br>String.prototype.length 用于创造对象的原型对象的特定的函数。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>String.length  返回了字符串的长度。</p>
+</blockquote>
+<p>&#160; &#160; &#160; &#160;万物皆是对象。String类型实质上也是一个被定义好的String对象,在这个对象里存有两个属性,__proto__和 length;在此需要注意,上述的MDN中的JS的关键词prototype是函数中使用的,而引申到实际存储中的关键词Key实质上是__proto__。并且,__proto__中可以看到当前对象中所有的内部方法,如果需要新增new String().__proto__.CustomFun = function(){},而使用prototype的话仅需String.prototype.CustomFun=function(){},这个可以打印一下一看究竟。</p>
+<img src="/2018/08/11/【前端】我应该要知道的string/string-1.jpg" title="分别打印了new String() 和 String()">
+<p>&#160; &#160; &#160; &#160;上面这张图分别打印了new String() 和 String(),<a href="http://www.w3school.com.cn/jsref/jsref_obj_string.asp" target="_blank" rel="noopener">根据W3D的说法,</a><em><em>当 String() 和运算符 new 一起作为构造函数使用时,它返回一个新创建的 String 对象,存放的是字符串或字符串表示。当不用 new 运算符调用 String() 时,它只把内容转换成原始的字符串,并返回转换后的值。</em></em> 在此想说,由于JS是词法作用域,编译前已经将定义初始时一些声明走完,故此在使用__proto__和prototype时,如果使用的了关键词New的构造函数<strong>(JS中的New并非面向对象的继承,而是通过apply函数copy了一份)</strong>所生成的字符串对象里的方法也会被提升。所以String的实例都继承自String.prototype。任何String.prototype上的改变都会影响到所有的String实例。你永远不知道你的猪队友会干什么,因此最好的办法就是谨慎(<del>严禁</del>)覆盖！！！</p>
+<p>&#160; &#160; &#160; &#160;上图中可以看到一些被继承的原生Api,如果我们新增了方法,它们也可以显示在__proto__里。知道这点对你驾驭一个第三方的前端库去面对一些奇奇怪怪的需求很有帮助。现在我们来背诵一下原生Api。</p>
+<h2 id="Api-部分来源于-MDN"><a href="#Api-部分来源于-MDN" class="headerlink" title="Api 部分来源于 MDN"></a>Api 部分来源于 MDN</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/anchor" target="_blank" rel="noopener">String.prototype.anchor()</a></li>
+</ul>
+<blockquote>
+<p>str.anchor(name) 方法创建一个 &lt;a> HTML 锚元素,被用作超文本靶标（hypertext target） 参数:一个字符串，表示被创建的标签的 name 属性。</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charAt" target="_blank" rel="noopener">String.prototype.charAt()</a></li>
+</ul>
+<blockquote>
+<p>str.charAt(index) 方法从一个字符串中返回指定的字符。参数: (0~length-1) 如果没有提供索引，charAt() 将使用0。</p>
+</blockquote>
+<p>也可以在字符串中使用str[index]</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt" target="_blank" rel="noopener">String.prototype.charCodeAt()</a></li>
+</ul>
+<blockquote>
+<p>str.charCodeAt(index) 参数:  一个大于等于 0，小于字符串长度的整数。如果不是一个数值，则默认为 0。返回值是一表示给定索引处（String中index索引处）字符的 UTF-16 代码单元值的数字；如果索引超出范围，则返回 NaN</p>
+</blockquote>
+<p>区分大小写，因为得到的是Unicode编码。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat" target="_blank" rel="noopener">String.prototype.concat()</a></li>
+</ul>
+<blockquote>
+<p>str.concat(string2, string3[, …, stringN]) 参数:  string2…stringN 和原字符串连接的多个字符串。</p>
+</blockquote>
+<p>不影响原字符串，生成新字符串返回。性能上比赋值运算符差。</p>
+<h4 id="引申-gt-【运算符与隐式类型转换】"><a href="#引申-gt-【运算符与隐式类型转换】" class="headerlink" title="引申=&gt;【运算符与隐式类型转换】"></a>引申=&gt;【运算符与隐式类型转换】</h4><blockquote>
+<p>= 赋值运算符</p>
+</blockquote>
+
       
     </div>
     
@@ -419,6 +468,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/11/【前端】JS 基础/" rel="prev" title="【前端】脑图版整理JS基础">
+                【前端】脑图版整理JS基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -477,8 +530,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -493,7 +555,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -529,6 +591,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-部分来源于-MDN"><span class="nav-number">1.</span> <span class="nav-text">属性 部分来源于 MDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Api-部分来源于-MDN"><span class="nav-number">2.</span> <span class="nav-text">Api 部分来源于 MDN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引申-gt-【运算符与隐式类型转换】"><span class="nav-number">2.0.1.</span> <span class="nav-text">引申=&gt;【运算符与隐式类型转换】</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
