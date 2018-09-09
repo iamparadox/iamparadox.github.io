@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff74;
+  background: #c9f109;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2709,4 +2709,9 @@ em:hover {
   font-weight: 500;
   text-decoration: overline;
   color: #87daff;
+}
+@media (max-width: 767px) {
+  .post-meta-item-text {
+    display: initial;
+  }
 }

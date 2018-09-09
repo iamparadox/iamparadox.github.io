@@ -505,7 +505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -518,7 +518,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -597,11 +597,7 @@
 
 
 <script>
-    function getAuthor(){
-        console.log(window)
-    }
-
-    getAuthor();
+    
 
 </script>
 
@@ -808,6 +804,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 
@@ -922,6 +921,7 @@
         for (var i = 0; i < circles.length; i++) {
             circles[i].move(w, h);
             circles[i].drawCircle(ctx);
+            var j;
             for (j = i + 1; j < circles.length; j++) {
                 circles[i].drawLine(ctx, circles[j]);
             }
