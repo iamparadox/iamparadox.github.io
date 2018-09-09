@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,javascript基础," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
+<meta name="keywords" content="前端,javascript基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/08/05/hello-world/index.html">
+<meta property="og:title" content="【前端】我应该要知道的JS相关内存知识">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/index.html">
 <meta property="og:site_name" content="一期一会">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-05T07:36:28.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/回收1.jpg">
+<meta property="og:updated_time" content="2018-09-09T15:59:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="【前端】我应该要知道的JS相关内存知识">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/回收1.jpg">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/05/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/"/>
 
 
 
 
 
-  <title>Hello World | 一期一会</title>
+  <title>【前端】我应该要知道的JS相关内存知识 | 一期一会</title>
   
 
 
@@ -264,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="[object Object]">
@@ -281,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">【前端】我应该要知道的JS相关内存知识</h1>
         
 
         <div class="post-meta">
@@ -290,7 +293,7 @@
                 <i class="fa fa-user"></i>
               </span>
               <span class="post-meta-item-text">
-                
+                iamparadox
               </span>
           </span>
           <span class="post-time">
@@ -301,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T15:36:28+08:00">
-                2018-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T17:02:50+08:00">
+                2018-08-14
               </time>
             
 
@@ -320,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/05/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/05/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2018/08/14/【前端】我应该要知道的JS相关内存知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/14/【前端】我应该要知道的JS相关内存知识/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -343,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  78
+                  1,048
                 </span>
               
 
@@ -359,7 +362,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -380,15 +383,26 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>&#160; &#160; &#160; &#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。</p>
+<h2 id="原始类型和引用类型"><a href="#原始类型和引用类型" class="headerlink" title="原始类型和引用类型"></a>原始类型和引用类型</h2><h2 id="垃圾回收规则"><a href="#垃圾回收规则" class="headerlink" title="垃圾回收规则"></a>垃圾回收规则</h2><h3 id="浏览器中的垃圾回收原理"><a href="#浏览器中的垃圾回收原理" class="headerlink" title="浏览器中的垃圾回收原理"></a>浏览器中的垃圾回收原理</h3><p>引用自<a href="https://www.cnblogs.com/zhwl/p/4664604.html" target="_blank" rel="noopener">@@郑文亮的JavaScript垃圾回收机制</a></p>
+<ul>
+<li>标记清除 （最常用）<br>&#160; &#160; &#160; &#160;这是javascript中最常用的垃圾回收方式。当变量进入执行环境是，就标记这个变量为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到他们。当变量离开环境时，则将其标记为“离开环境”。<br>&#160; &#160; &#160; &#160;垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后，它会去掉环境中的变量以及被环境中的变量引用的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后。垃圾收集器完成内存清除工作，销毁那些带标记的值，并回收他们所占用的内存空间。</li>
+<li>引用计数<br>&#160; &#160; &#160; &#160;另一种不太常见的垃圾回收策略是引用计数。引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型赋值给该变量时，则这个值的引用次数就是1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数就减1。当这个引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其所占的内存空间给收回来。这样，垃圾收集器下次再运行时，它就会释放那些引用次数为0的值所占的内存。<br><em><em>但是如果出现相互引用的情况，因为引用值次数永远不会为0，所以永远不会被清除。</em></em></li>
+</ul>
+<h3 id="不会被回收的常见情况"><a href="#不会被回收的常见情况" class="headerlink" title="不会被回收的常见情况"></a>不会被回收的常见情况</h3><ul>
+<li>全局变量</li>
+<li>闭包引用后闭包中的变量</li>
+<li>定时器或者回调</li>
+<li>没有清理的DOM元素引用或者子元素的引用</li>
+</ul>
+<p>放一个最近刷的题目:<br><img src="/2018/08/14/【前端】我应该要知道的JS相关内存知识/回收1.jpg" title="最近刷的回收题目"></p>
+<p>解析: 全局对同一个变量i定义了两次,第二次把第一次的给覆盖了，所以前两句生成了一个没有被回收的变量。<br>第11行调用的add()被赋值了一个匿名函数，所以add也是，匿名函数中的i由于被引用，但是不会被清除，所以第6行开始的内部i是第三个。注意第四行的i已经被清除了。</p>
+<h3 id="减少JavaScript中的垃圾回收"><a href="#减少JavaScript中的垃圾回收" class="headerlink" title="减少JavaScript中的垃圾回收"></a>减少JavaScript中的垃圾回收</h3><p>引用自<a href="https://www.cnblogs.com/zhwl/p/4664604.html" target="_blank" rel="noopener">@郑文亮的JavaScript垃圾回收机制</a></p>
+<h4 id="对象object优化"><a href="#对象object优化" class="headerlink" title="对象object优化"></a>对象object优化</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除obj对象的所有属性，高效的将obj转化为一个崭新的对象！</span></span><br><span class="line">cr.wipe = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> obj) &#123;</span><br><span class="line">         <span class="keyword">if</span> (obj.hasOwnProperty(p))</span><br><span class="line">            <span class="keyword">delete</span> obj[p];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>通过对同一个对象每次清空和新增新的属性||方法去操作同一个对象。</p>
+<h4 id="数组array优化"><a href="#数组array优化" class="headerlink" title="数组array优化"></a>数组array优化</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="comment">//下面可以将数组清空</span></span><br><span class="line">arr = [];</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">arr.length = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="方法function优化"><a href="#方法function优化" class="headerlink" title="方法function优化"></a>方法function优化</h4><p>在游戏的主循环中，setTimeout或requestAnimationFrame来调用一个成员方法是很常见的，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">self</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">              self.tick();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(<span class="keyword">this</span>), <span class="number">16</span>)</span><br></pre></td></tr></table></figure><br>每过16毫秒调用一次this.tick()，嗯，乍一看似乎没什么问题，但是仔细一琢磨，每一次调用都返回了一个新的方法对象，这就导致了大量的方法对象垃圾！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// at startup</span></span><br><span class="line"><span class="keyword">this</span>.tickFunc = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">self</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.tick();</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">)(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// in the tick() function</span></span><br><span class="line">setTimeout(<span class="keyword">this</span>.tickFunc, <span class="number">16</span>);</span><br></pre></td></tr></table></figure></p>
+<p>先定义好方法，在定时器中等轮询情况下只需要共同调用一个就可以了。</p>
 
       
     </div>
@@ -404,6 +418,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/javascript基础/" rel="tag"># javascript基础</a>
+          
+        </div>
+      
 
       
       
@@ -413,15 +435,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/12/【前端】我应该要知道的类型转换们/" rel="next" title="【前端】我应该要知道的类型转换们">
+                <i class="fa fa-chevron-left"></i> 【前端】我应该要知道的类型转换们
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/11/【前端】我应该要知道的string/" rel="prev" title="【前端 】我应该要知道的string">
-                【前端 】我应该要知道的string <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始类型和引用类型"><span class="nav-number">1.</span> <span class="nav-text">原始类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收规则"><span class="nav-number">2.</span> <span class="nav-text">垃圾回收规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器中的垃圾回收原理"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器中的垃圾回收原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不会被回收的常见情况"><span class="nav-number">2.2.</span> <span class="nav-text">不会被回收的常见情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少JavaScript中的垃圾回收"><span class="nav-number">2.3.</span> <span class="nav-text">减少JavaScript中的垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象object优化"><span class="nav-number">2.3.1.</span> <span class="nav-text">对象object优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组array优化"><span class="nav-number">2.3.2.</span> <span class="nav-text">数组array优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法function优化"><span class="nav-number">2.3.3.</span> <span class="nav-text">方法function优化</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
