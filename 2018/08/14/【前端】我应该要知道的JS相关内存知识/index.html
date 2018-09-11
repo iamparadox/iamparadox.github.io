@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 堆、栈和队列 &amp;#160; &amp;#160; &amp;#160; &amp;#160;了解堆栈是学习JS最关键的一步了。看过很多面试题都在问，按值传参和按照引用传参有什么差别？其实细究去考虑，堆栈所带来的问题无时无刻充斥在">
 <meta name="keywords" content="前端,javascript基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【前端】我应该要知道的JS相关内存知识">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/index.html">
 <meta property="og:site_name" content="一期一会">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 堆、栈和队列 &amp;#160; &amp;#160; &amp;#160; &amp;#160;了解堆栈是学习JS最关键的一步了。看过很多面试题都在问，按值传参和按照引用传参有什么差别？其实细究去考虑，堆栈所带来的问题无时无刻充斥在">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/堆栈图.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/数字内存.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/回收1.jpg">
-<meta property="og:updated_time" content="2018-09-09T15:59:04.000Z">
+<meta property="og:updated_time" content="2018-09-11T07:57:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】我应该要知道的JS相关内存知识">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 原始类型和引用类型垃圾回收规则浏览器中的垃圾回收原理引用自@@郑文亮的JavaScript垃圾回收机制  标记清除 （最常用）&amp;#160; &amp;#160; &amp;#160; &amp;#160;这是javascript中">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/回收1.jpg">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。 堆、栈和队列 &amp;#160; &amp;#160; &amp;#160; &amp;#160;了解堆栈是学习JS最关键的一步了。看过很多面试题都在问，按值传参和按照引用传参有什么差别？其实细究去考虑，堆栈所带来的问题无时无刻充斥在">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/14/【前端】我应该要知道的JS相关内存知识/堆栈图.jpg">
 
 
 
@@ -288,6 +290,7 @@
         
 
         <div class="post-meta">
+         
           <span class="post-time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-user"></i>
@@ -346,7 +349,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,048
+                  1,487
                 </span>
               
 
@@ -362,7 +365,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -384,7 +387,28 @@
 
       
         <p>&#160; &#160; &#160; &#160;内存知识很宽泛很细碎，今天特意结合前人以及平日的积累好好写写这一块。这块我也知之甚少，希望以后写代码在内存优化上可以更深入来优化这篇文章。</p>
-<h2 id="原始类型和引用类型"><a href="#原始类型和引用类型" class="headerlink" title="原始类型和引用类型"></a>原始类型和引用类型</h2><h2 id="垃圾回收规则"><a href="#垃圾回收规则" class="headerlink" title="垃圾回收规则"></a>垃圾回收规则</h2><h3 id="浏览器中的垃圾回收原理"><a href="#浏览器中的垃圾回收原理" class="headerlink" title="浏览器中的垃圾回收原理"></a>浏览器中的垃圾回收原理</h3><p>引用自<a href="https://www.cnblogs.com/zhwl/p/4664604.html" target="_blank" rel="noopener">@@郑文亮的JavaScript垃圾回收机制</a></p>
+<h2 id="堆、栈和队列"><a href="#堆、栈和队列" class="headerlink" title="堆、栈和队列"></a>堆、栈和队列</h2><img src="/2018/08/14/【前端】我应该要知道的JS相关内存知识/堆栈图.jpg" title="堆栈图">
+<p>&#160; &#160; &#160; &#160;了解堆栈是学习JS最关键的一步了。看过很多面试题都在问，按值传参和按照引用传参有什么差别？其实细究去考虑，堆栈所带来的问题无时无刻充斥在 JS 语法中。</p>
+<p><code>堆</code> 堆是一个完全二叉树的结构,虽然在数据结构中分有大根堆和小根堆，在DOM树中一般默认为大根堆,但是在存储中只需要关心索引，通过索引去取值。</p>
+<p><code>栈</code> 栈是一个类米缸的结构，后面倒入的上层米先吃,后进先出是它的特点。</p>
+<p><code>队列</code> 队列是一个类队伍的结构,先进先出是它的特点。</p>
+<h3 id="原始类型和引用类型"><a href="#原始类型和引用类型" class="headerlink" title="原始类型和引用类型"></a>原始类型和引用类型</h3><ul>
+<li>原始数据类型(国外网站也称Primitive value)一般存入栈中,它们按值传参,赋值后修改并不会改变原始定义时的值。<br>Primitive data types :  <strong>string</strong>, <strong>number</strong>, <strong>boolean</strong>, <strong>null</strong>, <strong>undefined</strong>, <strong>symbol</strong></li>
+<li>引用数据类型(国外网站也称Reference value)一般存入堆中,JS 不允许直接访问堆中的数据,它们按引用访问,赋值后修改也会修改原始值,继而影响到所有引用自原始值的变量。<br>Reference data types :  <strong>object</strong>, <strong>array</strong></li>
+</ul>
+<h3 id="数字内存"><a href="#数字内存" class="headerlink" title="数字内存"></a>数字内存</h3><img src="/2018/08/14/【前端】我应该要知道的JS相关内存知识/数字内存.jpg" title="数字内存">
+<ul>
+<li>JS中的数字是不分类型的，也就是没有byte/int/float/double等的差异,所有数字都是以64位浮点数形式储存,8 Byte = 64bit。8个字节，64位。</li>
+</ul>
+<h3 id="事件队列"><a href="#事件队列" class="headerlink" title="事件队列"></a>事件队列</h3>
+<ul>
+<li>这里挖个坑</li>
+</ul>
+<h3 id="在chrome中查看函数调用堆、作用域链与闭包"><a href="#在chrome中查看函数调用堆、作用域链与闭包" class="headerlink" title="在chrome中查看函数调用堆、作用域链与闭包"></a>在chrome中查看函数调用堆、作用域链与闭包</h3><ul>
+<li><a href="https://www.jianshu.com/p/73122bb3d262" target="_blank" rel="noopener">前端基础进阶（六）：在chrome开发者工具中观察函数调用栈、作用域链与闭包</a></li>
+</ul>
+<p>简书上写得特别好的波波大神，他写的系列强推！！</p>
+<h2 id="垃圾回收规则"><a href="#垃圾回收规则" class="headerlink" title="垃圾回收规则"></a>垃圾回收规则</h2><h3 id="浏览器中的垃圾回收原理"><a href="#浏览器中的垃圾回收原理" class="headerlink" title="浏览器中的垃圾回收原理"></a>浏览器中的垃圾回收原理</h3><p>引用自<a href="https://www.cnblogs.com/zhwl/p/4664604.html" target="_blank" rel="noopener">@郑文亮的JavaScript垃圾回收机制</a></p>
 <ul>
 <li>标记清除 （最常用）<br>&#160; &#160; &#160; &#160;这是javascript中最常用的垃圾回收方式。当变量进入执行环境是，就标记这个变量为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到他们。当变量离开环境时，则将其标记为“离开环境”。<br>&#160; &#160; &#160; &#160;垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后，它会去掉环境中的变量以及被环境中的变量引用的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后。垃圾收集器完成内存清除工作，销毁那些带标记的值，并回收他们所占用的内存空间。</li>
 <li>引用计数<br>&#160; &#160; &#160; &#160;另一种不太常见的垃圾回收策略是引用计数。引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型赋值给该变量时，则这个值的引用次数就是1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数就减1。当这个引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其所占的内存空间给收回来。这样，垃圾收集器下次再运行时，它就会释放那些引用次数为0的值所占的内存。<br><em><em>但是如果出现相互引用的情况，因为引用值次数永远不会为0，所以永远不会被清除。</em></em></li>
@@ -577,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始类型和引用类型"><span class="nav-number">1.</span> <span class="nav-text">原始类型和引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收规则"><span class="nav-number">2.</span> <span class="nav-text">垃圾回收规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器中的垃圾回收原理"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器中的垃圾回收原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不会被回收的常见情况"><span class="nav-number">2.2.</span> <span class="nav-text">不会被回收的常见情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少JavaScript中的垃圾回收"><span class="nav-number">2.3.</span> <span class="nav-text">减少JavaScript中的垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象object优化"><span class="nav-number">2.3.1.</span> <span class="nav-text">对象object优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组array优化"><span class="nav-number">2.3.2.</span> <span class="nav-text">数组array优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法function优化"><span class="nav-number">2.3.3.</span> <span class="nav-text">方法function优化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#堆、栈和队列"><span class="nav-number">1.</span> <span class="nav-text">堆、栈和队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始类型和引用类型"><span class="nav-number">1.1.</span> <span class="nav-text">原始类型和引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字内存"><span class="nav-number">1.2.</span> <span class="nav-text">数字内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件队列"><span class="nav-number">1.3.</span> <span class="nav-text">事件队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在chrome中查看函数调用堆、作用域链与闭包"><span class="nav-number">1.4.</span> <span class="nav-text">在chrome中查看函数调用堆、作用域链与闭包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收规则"><span class="nav-number">2.</span> <span class="nav-text">垃圾回收规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器中的垃圾回收原理"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器中的垃圾回收原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不会被回收的常见情况"><span class="nav-number">2.2.</span> <span class="nav-text">不会被回收的常见情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少JavaScript中的垃圾回收"><span class="nav-number">2.3.</span> <span class="nav-text">减少JavaScript中的垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象object优化"><span class="nav-number">2.3.1.</span> <span class="nav-text">对象object优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组array优化"><span class="nav-number">2.3.2.</span> <span class="nav-text">数组array优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法function优化"><span class="nav-number">2.3.3.</span> <span class="nav-text">方法function优化</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
