@@ -79,15 +79,20 @@
 
 
 
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
 <meta name="keywords" content="前端,javascript基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【前端】我应该要知道的object">
 <meta property="og:url" content="http://yoursite.com/2018/08/17/【前端】我应该要知道的object/index.html">
 <meta property="og:site_name" content="一期一会">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-09T16:50:12.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/17/【前端】我应该要知道的object/create.jpg">
+<meta property="og:updated_time" content="2018-09-25T12:06:52.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】我应该要知道的object">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/17/【前端】我应该要知道的object/create.jpg">
 
 
 
@@ -342,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,264
                 </span>
               
 
@@ -358,7 +363,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -379,7 +384,66 @@
       
 
       
-        
+        <p>&#160; &#160; &#160; &#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。</p>
+<h2 id="字面量-amp-amp-基本类型-amp-amp-类型转换"><a href="#字面量-amp-amp-基本类型-amp-amp-类型转换" class="headerlink" title="字面量 &amp;&amp; 基本类型 &amp;&amp; 类型转换"></a>字面量 &amp;&amp; 基本类型 &amp;&amp; 类型转换</h2><ul>
+<li><a href="/2018/08/12/【前端】我应该要知道的类型转换们/" title="【前端】我应该要知道的类型转换们">【前端】我应该要知道的类型转换们</a>
+</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在使用过程中,它被存储于<strong>堆内存</strong>中,变量赋值即为引用,引用啊兄弟们，一处更改就会影响全部引用此处的地方，由此引申了深拷贝和浅拷贝。</p>
+<p><code>深拷贝</code> : 设置一个新内存空间去复制。</p>
+<p><code>浅拷贝</code> : 涉及到了对原型的引用,一朝更改朝不保夕。</p>
+<p>Vue中watch的deep模式类似深拷贝，所以对于 Array 和 Object 监听的时候需要使用这个模式，并且不能监听到相应Value的变化，需要配合计算属性。<br>在Vue项目中的传参中多对象合并的时候，就曾用过浅拷贝：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    length : <span class="number">10</span>,</span><br><span class="line">    arr : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> copyFun = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        newObj[prop] = obj[prop]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">copyFun.apply(obj);</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>或者用 API Object.assign()：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> copy = <span class="built_in">Object</span>.assign(&#123;&#125;, obj);</span><br><span class="line"><span class="built_in">console</span>.log(copy); <span class="comment">// &#123; a: 1 &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>但是项目中如果需要深层复制数据结构，区分更改前和更改后的，则需要深拷贝了，而深拷贝主要拷贝的是原对象中的数组和对象属性：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    length : <span class="number">10</span>,</span><br><span class="line">    arr : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> deepCopyFun = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 索引</span></span><br><span class="line">    <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> obj[prop] ==<span class="string">"object"</span> &amp;&amp; obj[prop] != <span class="literal">null</span> ))&#123;</span><br><span class="line">            <span class="keyword">switch</span> (obj[item].constructor) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="built_in">Array</span>:</span><br><span class="line">                    newObj[item] = [];</span><br><span class="line">                    deepCopyFun(obj[item]);</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">case</span> <span class="built_in">Object</span>:</span><br><span class="line">                    newObj[item] = &#123;&#125;;</span><br><span class="line">                    deepCopyFun(obj[item]);</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">case</span> <span class="built_in">Date</span>:</span><br><span class="line">                    newObj[item] = <span class="keyword">new</span> <span class="built_in">Date</span>(obj[item])</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">case</span> <span class="built_in">RegExp</span>:</span><br><span class="line">                    <span class="keyword">let</span> attributes = <span class="string">''</span></span><br><span class="line">                    attributes += obj[item].global ? <span class="string">'g'</span> : <span class="string">''</span></span><br><span class="line">                    attributes += obj[item].ignoreCase ? <span class="string">'g'</span> : <span class="string">''</span></span><br><span class="line">                    attributes += obj[item].multiline ? <span class="string">'g'</span> : <span class="string">''</span></span><br><span class="line">                    newObj[item] =  <span class="keyword">new</span> <span class="built_in">RegExp</span>(obj[item].source, attributes);</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">case</span> <span class="built_in">Error</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    newObj[item] = obj[item]</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 普通类型还是一样</span></span><br><span class="line">            newObj[prop] = obj[prop]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">deepCopyFun.apply(obj);</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>最简单的办法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> deepCopy = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br></pre></td></tr></table></figure></p>
+<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>除了 value 属性外还包含默认的三种属性值：</p>
+<ul>
+<li><p>writeable 可读  writeable:false相当于定义一个空的setter,调用setter时报错TypeError。</p>
+</li>
+<li><p>enumerable 可枚举 如果为false 不会出现在对象的属性枚举中，但是仍然可以访问该属性。</p>
+</li>
+<li><p>configurable 可配置 默认属性中configurable为false时可以将writeable的True的可以被配置成，但是false不能被配置成True。不可配置时不能修改 Value 值。</p>
+</li>
+</ul>
+<p>我们可以使用defineProperty()方法重置以上属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="string">"a"</span> : <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a,<span class="string">"a"</span>,&#123;</span><br><span class="line">    writeable : <span class="literal">true</span>,</span><br><span class="line">    enumerable : <span class="literal">true</span>,</span><br><span class="line">    configurable : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="内置属性"><a href="#内置属性" class="headerlink" title="内置属性"></a>内置属性</h2><ul>
+<li><p>[[Get]]</p>
+</li>
+<li><p>[[Put]] 对象中的赋值操作，但是优先级比</p>
+</li>
+<li><p>Getter</p>
+</li>
+<li><p>Setter</p>
+</li>
+</ul>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未知属性清零</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> props)&#123;</span><br><span class="line">    <span class="keyword">delete</span> obj[prop];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已知属性</span></span><br><span class="line"><span class="keyword">delete</span> obj.a;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未知属性更新</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> prop <span class="keyword">in</span> props)&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    obj[prop] = <span class="string">'索引:'</span> + index;</span><br><span class="line">    index ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已知属性更新或者增加</span></span><br><span class="line">obj.a = <span class="string">'A'</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="减少全局污染"><a href="#减少全局污染" class="headerlink" title="减少全局污染"></a>减少全局污染</h2><p>&#160; &#160; &#160; &#160;在对象中，object.create(null)比{}更空，少一个 object.prototype,在调用apply()、call()、bind()时在处理this绑定时比填入null 更为合适。</p>
+<img src="/2018/08/17/【前端】我应该要知道的object/create.jpg" title="object.create(null)与{}创建对象时的不同">
+<p>书中参照了一个例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ø = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"a :"</span> + a + <span class="string">","</span> + <span class="string">"b:"</span> + b)</span><br><span class="line">&#125;</span><br><span class="line">foo.apply(ø,[<span class="number">1</span>,<span class="number">2</span>]); <span class="comment">//a:1,b:2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//柯里化</span></span><br><span class="line"><span class="keyword">var</span> b = foo.bind(ø,<span class="number">2</span>);</span><br><span class="line">b(<span class="number">3</span>); <span class="comment">//a:1,b:2</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul>
+<li><a href="/2018/09/01/【前端】我应该要知道的面向对象/" title="【前端】我应该要知道的面向对象">【前端】我应该要知道的面向对象</a>
+</li>
+</ul>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
+<p>Object.prototype 返回了字符串的原型。<br>Object.prototype.constructor  此属性的值是对函数本身的引用,可以区分具体哪种Object。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">3</span>);</span><br><span class="line">n.constructor === <span class="built_in">Number</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="API-部分来源-MDN"><a href="#API-部分来源-MDN" class="headerlink" title="API 部分来源 MDN"></a>API 部分来源 MDN</h2><ul>
+<li><h3 id="Object-prototype-assign"><a href="#Object-prototype-assign" class="headerlink" title="Object.prototype.assign()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener">Object.prototype.assign()</a></h3><blockquote>
+<p>Object.assign(target, …sources); 浅拷贝！！！<br>方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。<br>只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用Object.getOwnPropertyDescriptor()和Object.defineProperty() 。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>注意，Object.assign 不会跳过那些值为 null 或 undefined 的源对象。</strong></p>
+<ul>
+<li><h3 id="Object-prototype-create"><a href="#Object-prototype-create" class="headerlink" title="Object.prototype.create()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener">Object.prototype.create()</a></h3><blockquote>
+<p>Object.create(proto, [propertiesObject]);<br>方法创建一个新对象，使用现有的对象来提供新创建的对象的<strong>proto</strong>。<br>这个属性我在面试小伙伴的时候经常考。</p>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
     
@@ -421,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/19/【前端】我应该要知道的Array与TypedArray/" rel="prev" title="【前端】我应该要知道的Array与TypedArray">
-                【前端】我应该要知道的Array与TypedArray <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/19/【前端】我应该要知道的Array/" rel="prev" title="【前端】我应该要知道的Array">
+                【前端】我应该要知道的Array <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -498,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -534,6 +607,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字面量-amp-amp-基本类型-amp-amp-类型转换"><span class="nav-number">1.</span> <span class="nav-text">字面量 &amp;&amp; 基本类型 &amp;&amp; 类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性描述符"><span class="nav-number">3.</span> <span class="nav-text">属性描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置属性"><span class="nav-number">4.</span> <span class="nav-text">内置属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">5.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">6.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少全局污染"><span class="nav-number">7.</span> <span class="nav-text">减少全局污染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">8.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">9.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-部分来源-MDN"><span class="nav-number">10.</span> <span class="nav-text">API 部分来源 MDN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-assign"><span class="nav-number">10.1.</span> <span class="nav-text">Object.prototype.assign()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-create"><span class="nav-number">10.2.</span> <span class="nav-text">Object.prototype.create()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
