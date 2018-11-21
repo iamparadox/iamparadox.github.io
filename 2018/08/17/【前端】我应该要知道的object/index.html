@@ -88,7 +88,7 @@
 <meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/17/【前端】我应该要知道的object/create.jpg">
-<meta property="og:updated_time" content="2018-09-25T12:06:52.379Z">
+<meta property="og:updated_time" content="2018-09-26T10:49:33.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】我应该要知道的object">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,264
+                  1,272
                 </span>
               
 
@@ -408,7 +408,7 @@
 <p>我们可以使用defineProperty()方法重置以上属性。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="string">"a"</span> : <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a,<span class="string">"a"</span>,&#123;</span><br><span class="line">    writeable : <span class="literal">true</span>,</span><br><span class="line">    enumerable : <span class="literal">true</span>,</span><br><span class="line">    configurable : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="内置属性"><a href="#内置属性" class="headerlink" title="内置属性"></a>内置属性</h2><ul>
-<li><p>[[Get]]</p>
+<li><p>[[Get]] </p>
 </li>
 <li><p>[[Put]] 对象中的赋值操作，但是优先级比</p>
 </li>
@@ -439,11 +439,11 @@
 <p><strong>注意，Object.assign 不会跳过那些值为 null 或 undefined 的源对象。</strong></p>
 <ul>
 <li><h3 id="Object-prototype-create"><a href="#Object-prototype-create" class="headerlink" title="Object.prototype.create()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener">Object.prototype.create()</a></h3><blockquote>
-<p>Object.create(proto, [propertiesObject]);<br>方法创建一个新对象，使用现有的对象来提供新创建的对象的<strong>proto</strong>。<br>这个属性我在面试小伙伴的时候经常考。</p>
+<p>Object.create(proto, [propertiesObject]);<br>方法创建一个新对象，使用现有的对象来提供新创建的对象的<strong>proto</strong>。<br>这个属性我在面试小伙伴的时候经常问。</p>
 </blockquote>
 </li>
 </ul>
-
+<h4 id="Object-create-和-new-Object-的区别"><a href="#Object-create-和-new-Object-的区别" class="headerlink" title="Object.create()和 new Object()的区别:"></a>Object.create()和 new Object()的区别:</h4>
       
     </div>
     
@@ -617,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字面量-amp-amp-基本类型-amp-amp-类型转换"><span class="nav-number">1.</span> <span class="nav-text">字面量 &amp;&amp; 基本类型 &amp;&amp; 类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性描述符"><span class="nav-number">3.</span> <span class="nav-text">属性描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置属性"><span class="nav-number">4.</span> <span class="nav-text">内置属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">5.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">6.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少全局污染"><span class="nav-number">7.</span> <span class="nav-text">减少全局污染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">8.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">9.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-部分来源-MDN"><span class="nav-number">10.</span> <span class="nav-text">API 部分来源 MDN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-assign"><span class="nav-number">10.1.</span> <span class="nav-text">Object.prototype.assign()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-create"><span class="nav-number">10.2.</span> <span class="nav-text">Object.prototype.create()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字面量-amp-amp-基本类型-amp-amp-类型转换"><span class="nav-number">1.</span> <span class="nav-text">字面量 &amp;&amp; 基本类型 &amp;&amp; 类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">2.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性描述符"><span class="nav-number">3.</span> <span class="nav-text">属性描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置属性"><span class="nav-number">4.</span> <span class="nav-text">内置属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">5.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">6.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少全局污染"><span class="nav-number">7.</span> <span class="nav-text">减少全局污染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">8.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">9.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-部分来源-MDN"><span class="nav-number">10.</span> <span class="nav-text">API 部分来源 MDN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-assign"><span class="nav-number">10.1.</span> <span class="nav-text">Object.prototype.assign()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-create"><span class="nav-number">10.2.</span> <span class="nav-text">Object.prototype.create()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-create-和-new-Object-的区别"><span class="nav-number">10.2.1.</span> <span class="nav-text">Object.create()和 new Object()的区别:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
