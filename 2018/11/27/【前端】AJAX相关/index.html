@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,javascript基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;介于面试经常问到，所以好好整理一下 AJAX 相关的知识。之前有个面试官一直问我前端怎么彻底解决跨域，现在回想起来，前端没有办法彻底解决跨域的啊，还是要通过服务器端去处理的。工作中一直使用 JQ 和 AXIOS 居多，原生部分很薄弱，近来私下学习了proxy 部分，这一块也会细致地补全。为了写这篇把《图解 HTTP》给看完了。比心。 来源：">
+<meta name="keywords" content="前端,javascript基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【前端】AJAX相关">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/index.html">
+<meta property="og:site_name" content="一期一会">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;介于面试经常问到，所以好好整理一下 AJAX 相关的知识。之前有个面试官一直问我前端怎么彻底解决跨域，现在回想起来，前端没有办法彻底解决跨域的啊，还是要通过服务器端去处理的。工作中一直使用 JQ 和 AXIOS 居多，原生部分很薄弱，近来私下学习了proxy 部分，这一块也会细致地补全。为了写这篇把《图解 HTTP》给看完了。比心。 来源：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/传输流.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/报文、首部在传输流中的运用.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/get请求.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/option请求.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/trace1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/trace2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/三次握手.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/四次握手.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/contentRange.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/通用首部字段.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/请求首部字段.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/响应首部字段.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/实体首部字段.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/accept.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/HTTPS通信步骤.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/HTTPS步骤详解.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/WebSocket.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/状态码.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/301.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/limit.jpg">
+<meta property="og:updated_time" content="2018-11-29T16:49:03.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【前端】AJAX相关">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;介于面试经常问到，所以好好整理一下 AJAX 相关的知识。之前有个面试官一直问我前端怎么彻底解决跨域，现在回想起来，前端没有办法彻底解决跨域的啊，还是要通过服务器端去处理的。工作中一直使用 JQ 和 AXIOS 居多，原生部分很薄弱，近来私下学习了proxy 部分，这一块也会细致地补全。为了写这篇把《图解 HTTP》给看完了。比心。 来源：">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/传输流.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/【前端】AJAX相关/"/>
+
+
+
+
+
+  <title>【前端】AJAX相关 | 一期一会</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+    <div class="bg_content">
+       <canvas id="canvas"></canvas>
+    </div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一期一会</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">成长指南</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/【前端】AJAX相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="[object Object]">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一期一会">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【前端】AJAX相关</h1>
+        
+
+        <div class="post-meta">
+         
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-user"></i>
+              </span>
+              <span class="post-meta-item-text">
+                iamparadox
+              </span>
+          </span>
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T15:01:33+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/27/【前端】AJAX相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/27/【前端】AJAX相关/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,242
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#160; &#160; &#160; &#160;介于面试经常问到，所以好好整理一下 AJAX 相关的知识。之前有个面试官一直问我前端怎么彻底解决跨域，现在回想起来，前端没有办法彻底解决跨域的啊，还是要通过服务器端去处理的。工作中一直使用 JQ 和 AXIOS 居多，原生部分很薄弱，近来私下学习了proxy 部分，这一块也会细致地补全。为了写这篇把《图解 HTTP》给看完了。比心。</p>
+<p>来源：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qzcsu/article/details/72861891" target="_blank" rel="noopener">TCP的三次握手与四次挥手（详解+动图）</a></li>
+<li>《图解 HTTP》</li>
+</ul>
+<h1 id="协议部分"><a href="#协议部分" class="headerlink" title="协议部分"></a>协议部分</h1><img src="/2018/11/27/【前端】AJAX相关/传输流.jpg" title="传输流">
+<img src="/2018/11/27/【前端】AJAX相关/报文、首部在传输流中的运用.jpg" title="报文、首部在传输流中的运用">
+<p>IP协议:位于网络层，所指协议而非地址，作用是把各种数据包传给对方。对方接受的门牌信息中最重要的就是MAC地址(固定地址，不可更改)和IP地址(分配地址，可更改)。<br>TCP协议:位于传输层，提供将大块数据分割成报文段为单位的数据包进行管理和传输服务。</p>
+<p>UDP:不可靠传送，特点是不需要确认建立连接也不需要收到回应，优点是节流且速度快。用于实时性高服务。对应的应用层的协议主要有DNS,TFTP,DHCP,SNMP,NFS等。<br>TCP:可靠传送，特点是传送前必须建立连接，传送后释放连接，优点是数据传送可靠。对应的应用层的协议主要有SMTP,TELNET,HTTP,FTP 等</p>
+
+<h2 id="请求类型"><a href="#请求类型" class="headerlink" title="请求类型"></a>请求类型</h2><h3 id="【Get请求】"><a href="#【Get请求】" class="headerlink" title="【Get请求】"></a>【Get请求】</h3><img src="/2018/11/27/【前端】AJAX相关/get请求.jpg" title="Get请求">
+<p>Get请求方法用来请求已被 URL 识别的资源。如果是纯文本原样返回，如果是程序，返回执行后的输出结果，所以可能被注入。</p>
+<h3 id="【Post请求】"><a href="#【Post请求】" class="headerlink" title="【Post请求】"></a>【Post请求】</h3><p>Post请求方法用来传输实体的主体。</p>
+<h3 id="【Put请求】"><a href="#【Put请求】" class="headerlink" title="【Put请求】"></a>【Put请求】</h3><p>Put请求方法用来传输文件。但是由于 HTTP/1.1的Put方法不带验证机制，故此使用率不高，但是Restful设计风格的可以采用Put方法。返回204 NO Content.</p>
+<h3 id="【Option请求】"><a href="#【Option请求】" class="headerlink" title="【Option请求】"></a>【Option请求】</h3><img src="/2018/11/27/【前端】AJAX相关/option请求.jpg" title="Option请求">
+<p>Option请求用于查询针对 URL指定资源支持的方法。</p>
+<h3 id="【Head请求】"><a href="#【Head请求】" class="headerlink" title="【Head请求】"></a>【Head请求】</h3><p>Head请求不返回报文主体部分，用于确认 URL 的有效性和资源更新的日期等。</p>
+<h3 id="【Delete请求】"><a href="#【Delete请求】" class="headerlink" title="【Delete请求】"></a>【Delete请求】</h3><p>Delete请求用来删除文件。但是由于 HTTP/1.1的Put方法不带验证机制，故此使用率不高，但是Restful设计风格的可以采用Delete方法。返回204 NO Content.</p>
+<h3 id="【Trace请求】"><a href="#【Trace请求】" class="headerlink" title="【Trace请求】"></a>【Trace请求】</h3><img src="/2018/11/27/【前端】AJAX相关/trace1.jpg">
+<img src="/2018/11/27/【前端】AJAX相关/trace2.jpg">
+<p>划重点：<br>容易被跨站攻击<br>通过头部的 Max-Forwards去控制 逐次减1</p>
+<h3 id="【Connect请求】"><a href="#【Connect请求】" class="headerlink" title="【Connect请求】"></a>【Connect请求】</h3><p>Connect请求在于代理服务器通信时建立隧道，实现用隧道协议进行 TCP 通信，主要使用SSL和TLS将通信内容加密后经隧道传输。</p>
+<h2 id="TCP报文首部-这块实在背不出-。"><a href="#TCP报文首部-这块实在背不出-。" class="headerlink" title="TCP报文首部 这块实在背不出=。="></a>TCP报文首部 这块实在背不出=。=</h2><ul>
+<li>源端口和目的端口，各占2个字节，分别写入源端口和目的端口；</li>
+<li>序号，占4个字节，TCP连接中传送的字节流中的每个字节都按顺序编号。例如，一段报文的序号字段值是 301 ，而携带的数据共有100字段，显然下一个报文段（如果还有的话）的数据序号应该从401开始；</li>
+<li>确认号，占4个字节，是期望收到对方下一个报文的第一个数据字节的序号。例如，B收到了A发送过来的报文，其序列号字段是501，而数据长度是200字节，这表明B正确的收到了A发送的到序号700为止的数据。因此，B期望收到A的下一个数据序号是701，于是B在发送给A的确认报文段中把确认号置为701；</li>
+<li>数据偏移，占4位，它指出TCP报文的数据距离TCP报文段的起始处有多远；</li>
+<li>保留，占6位，保留今后使用，但目前应都位0；</li>
+<li>紧急URG，当URG=1，表明紧急指针字段有效。告诉系统此报文段中有紧急数据；</li>
+<li>确认ACK，仅当ACK=1时，确认号字段才有效。TCP规定，在连接建立后所有报文的传输都必须把ACK置1；</li>
+<li>推送PSH，当两个应用进程进行交互式通信时，有时在一端的应用进程希望在键入一个命令后立即就能收到对方的响应，这时候就将PSH=1；</li>
+<li>复位RST，当RST=1，表明TCP连接中出现严重差错，必须释放连接，然后再重新建立连接；</li>
+<li>同步SYN，在连接建立时用来同步序号。当SYN=1，ACK=0，表明是连接请求报文，若同意连接，则响应报文中应该使SYN=1，ACK=1；</li>
+<li>终止FIN，用来释放连接。当FIN=1，表明此报文的发送方的数据已经发送完毕，并且要求释放；</li>
+<li>窗口，占2字节，指的是通知接收方，发送本报文你需要有多大的空间来接受；</li>
+<li>检验和，占2字节，校验首部和数据这两部分；</li>
+<li>紧急指针，占2字节，指出本报文段中的紧急数据的字节数；</li>
+<li>选项，长度可变，定义一些其他的可选的参数。</li>
+</ul>
+<p>转载来源：<br>作者：小书go<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/qzcsu/article/details/72861891" target="_blank" rel="noopener">https://blog.csdn.net/qzcsu/article/details/72861891</a> </p>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><img src="/2018/11/27/【前端】AJAX相关/三次握手.jpg" title="三次握手">
+<h2 id="四次握手"><a href="#四次握手" class="headerlink" title="四次握手"></a>四次握手</h2><img src="/2018/11/27/【前端】AJAX相关/四次握手.jpg" title="四次握手">
+<h2 id="首部字段-具体书中-P84页开始"><a href="#首部字段-具体书中-P84页开始" class="headerlink" title="首部字段 具体书中 P84页开始"></a>首部字段 具体书中 P84页开始</h2><img src="/2018/11/27/【前端】AJAX相关/contentRange.jpg" title="Content-Range">
+<ul>
+<li>通用首部字段：请求报文和响应报文两方都会使用的首部<img src="/2018/11/27/【前端】AJAX相关/通用首部字段.jpg" title="通用首部字段"></li>
+<li>请求首部字段：request Header 从客户端向服务器端发送请求报文时使用的首部<img src="/2018/11/27/【前端】AJAX相关/请求首部字段.jpg" title="请求首部字段"></li>
+<li>响应首部字段：response Header 从服务器端向客户端发送请求报文时使用的首部<img src="/2018/11/27/【前端】AJAX相关/响应首部字段.jpg" title="响应首部字段"></li>
+<li>实体首部字段：针对请求报文和响应报文的实体部分使用的首部。<img src="/2018/11/27/【前端】AJAX相关/实体首部字段.jpg" title="实体首部字段">
+</li>
+</ul>
+<p>其中特殊：</p>
+<ul>
+<li>范围请求<br>  Content-Range : 指定资源的byte范围。主要用于断点下载或者中断处恢复下载。在书中 P64页将其称为范围请求。</li>
+<li>内容协商   <img src="/2018/11/27/【前端】AJAX相关/accept.jpg" title="accept-*">
+  Accept: 用户代理可处理的媒体类型<br>  Accept-Charset: 优先的字符集<br>  Accept-Encoding: 优先的内容编码<br>  Accept-Language: 优先的语言<br>  Content-Language: 实体主题的自然语言</li>
+<li>主体的对象类型<br>  Content-Type: 实体主体的媒体查询<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2>HTTP的缺点：</li>
+<li>通信使用明文，内容可能会被窃听</li>
+<li>不验证通信方的身份，因此可能遭遇伪装</li>
+<li>无法证明报文的完整性，所以有可能遭受篡改</li>
+</ul>
+<p>HTTPS 是披着SSL协议外衣的HTTP协议，人称超文本传输安全协议。在以往 HTTP 直接和 TCP 通信,当使用 SSL 时，则演变成先和 SSL 通信，再由SSL 和 TCP 通信。</p>
+<h3 id="HTTPS通信步骤-书-P162页-采用公开密钥加密"><a href="#HTTPS通信步骤-书-P162页-采用公开密钥加密" class="headerlink" title="HTTPS通信步骤 书 P162页 采用公开密钥加密"></a>HTTPS通信步骤 书 P162页 采用公开密钥加密</h3><img src="/2018/11/27/【前端】AJAX相关/HTTPS通信步骤.jpg" title="HTTPS通信步骤">
+<img src="/2018/11/27/【前端】AJAX相关/HTTPS步骤详解.jpg" title="HTTPS步骤详解">
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><img src="/2018/11/27/【前端】AJAX相关/WebSocket.jpg" title="WebSocket通信步骤">
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><img src="/2018/11/27/【前端】AJAX相关/状态码.jpg" title="状态码">
+<p>常用14个（书的 P69页开始）:</p>
+<ul>
+<li>200 Ok: 表示从客户端发来的请求在服务端被正常处理了。</li>
+<li>204 No Content: 请求处理成功！但是没有资源可返回。</li>
+<li>206 Partial Content: 请求处理成功！但是只请求部分资源。</li>
+<li>301 Moved Permanently: 永久性重定向。表示请求的资源已被分配了新的 URL。<img src="/2018/11/27/【前端】AJAX相关/301.jpg" width="301" title="Moved Permanently"></li>
+<li>302 Found: 临时性重定向。表示请求的资源已被分配了新的 URL，并且希望用户本次能使用心的 URL 访问。</li>
+<li>303 See Other: 临时性重定向。表示请求的资源存在着另一个URL，提示客户端应采用Get方法获取资源。<img src="/2018/11/27/【前端】AJAX相关/limit.jpg"></li>
+<li>304 Not Modified: 表示请求的资源存在但是不满足请求调用条件。例如 POST 接口写成了 GET。与重定向没关系。</li>
+<li>307 Temporary Redirect: 临时性重定向。遵照浏览器标准，不会从 Post变成 Get.</li>
+<li>400 Bad Request: 该状态码表示请求报文中存在语法错误。</li>
+<li>401 Bad Unauthorized: 该状态码表示请求需要有通过 HTTP 认证的认证信息。如果已经进行过一次请求，则表示用户认证失败。</li>
+<li>403 Forbidden: 该状态码表示对请求资源的访问被服务器拒绝了。未获得文件系统的访问权限等情况都可能发生403的原因。</li>
+<li>404 Forbidden: 该状态码表示服务器上无法找到请求的资源或是拒绝请求。</li>
+<li>500 Internal Server Error: 该状态码表示服务器在执行请求时发生错误或者应用存在BUG.</li>
+<li>503 Server Unavailable: 该状态码表示服务器超负载或者停级。</li>
+</ul>
+<h2 id="理论总结"><a href="#理论总结" class="headerlink" title="理论总结:"></a>理论总结:</h2><p>协议部分 TCP/IP 协议占据基础主导地位，引领着 HTTP 的传输步骤。但是在 HTTPS 中，通信建立需要先同 SSL 协议沟通，采用公开密钥加密技术传递加密的算法，但是完成这些步骤后，后面仍然是 TCP/IP 协议。</p>
+<h2 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h2><ul>
+<li>AXIOS中的类型请求是application/json;JQ的类型请求是xxx-www-application，两者在与后端沟通时，需要注意层级问题。</li>
+</ul>
+<h1 id="实战总结"><a href="#实战总结" class="headerlink" title="实战总结"></a>实战总结</h1><h2 id="原生-XMLHttpRequest"><a href="#原生-XMLHttpRequest" class="headerlink" title="原生 XMLHttpRequest"></a>原生 XMLHttpRequest</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/javascript基础/" rel="tag"># javascript基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/14/【前端】TypedArray/" rel="next" title="【前端】TypedArray">
+                <i class="fa fa-chevron-left"></i> 【前端】TypedArray
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      <!--
+       -->
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name dn" itemprop="name">[object Object]</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#协议部分"><span class="nav-number">1.</span> <span class="nav-text">协议部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求类型"><span class="nav-number">1.1.</span> <span class="nav-text">请求类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#【Get请求】"><span class="nav-number">1.1.1.</span> <span class="nav-text">【Get请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Post请求】"><span class="nav-number">1.1.2.</span> <span class="nav-text">【Post请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Put请求】"><span class="nav-number">1.1.3.</span> <span class="nav-text">【Put请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Option请求】"><span class="nav-number">1.1.4.</span> <span class="nav-text">【Option请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Head请求】"><span class="nav-number">1.1.5.</span> <span class="nav-text">【Head请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Delete请求】"><span class="nav-number">1.1.6.</span> <span class="nav-text">【Delete请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Trace请求】"><span class="nav-number">1.1.7.</span> <span class="nav-text">【Trace请求】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【Connect请求】"><span class="nav-number">1.1.8.</span> <span class="nav-text">【Connect请求】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP报文首部-这块实在背不出-。"><span class="nav-number">1.2.</span> <span class="nav-text">TCP报文首部 这块实在背不出=。=</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">1.3.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次握手"><span class="nav-number">1.4.</span> <span class="nav-text">四次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首部字段-具体书中-P84页开始"><span class="nav-number">1.5.</span> <span class="nav-text">首部字段 具体书中 P84页开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">1.6.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS通信步骤-书-P162页-采用公开密钥加密"><span class="nav-number">1.6.1.</span> <span class="nav-text">HTTPS通信步骤 书 P162页 采用公开密钥加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-number">1.7.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">1.8.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论总结"><span class="nav-number">1.9.</span> <span class="nav-text">理论总结:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#踩坑总结"><span class="nav-number">1.10.</span> <span class="nav-text">踩坑总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战总结"><span class="nav-number">2.</span> <span class="nav-text">实战总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生-XMLHttpRequest"><span class="nav-number">2.1.</span> <span class="nav-text">原生 XMLHttpRequest</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"> 共同维护 : 
+     iamparadox  ZephyrLai  
+  </span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+<script>
+    
+
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: '0d178e6a576de5601cb1f6581303b7d502fc1c99',
+            repo: 'iamparadox.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '693f67b1220410dc01533a2775213acf8d686294',
+            
+                client_id: 'de7cddf028f095a8f3d8'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+<script>
+    'use strict';
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    var Circle = function () {
+       function Circle(x, y) {
+            _classCallCheck(this, Circle);
+
+            this.x = x;
+            this.y = y;
+            this.r = Math.random() * 10;
+            this._mx = Math.random();
+            this._my = Math.random();
+        }
+
+       _createClass(Circle, [{
+            key: 'drawCircle',
+            value: function drawCircle(ctx) {
+                ctx.beginPath();
+                //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+                ctx.arc(this.x, this.y, this.r, 0, 360);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+                ctx.fill();
+            }
+        }, {
+            key: 'drawLine',
+            value: function drawLine(ctx, _circle) {
+                var dx = this.x - _circle.x;
+                var dy = this.y - _circle.y;
+                var d = Math.sqrt(dx * dx + dy * dy);
+                if (d < 150) {
+                    ctx.beginPath();
+
+                    ctx.moveTo(this.x, this.y); //起始点
+                    ctx.lineTo(_circle.x, _circle.y); //终点
+                    ctx.closePath();
+                    ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                    ctx.stroke();
+                }
+            }
+
+
+        }, {
+            key: 'move',
+            value: function move(w, h) {
+                this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+                this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+                this.x += this._mx / 2;
+                this.y += this._my / 2;
+            }
+        }]);
+
+        return Circle;
+    }();
+
+
+
+    var currentCirle = function (_Circle) {
+        _inherits(currentCirle, _Circle);
+
+        function currentCirle(x, y) {
+            _classCallCheck(this, currentCirle);
+
+            return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+        }
+
+        _createClass(currentCirle, [{
+            key: 'drawCircle',
+            value: function drawCircle(ctx) {
+                ctx.beginPath();
+
+                //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+                this.r = 8;
+                ctx.arc(this.x, this.y, this.r, 0, 360);
+                ctx.closePath();
+                //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+                ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+                ctx.fill();
+            }
+        }]);
+
+        return currentCirle;
+    }(Circle);
+
+
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width = canvas.offsetWidth;
+    var h = canvas.height = canvas.offsetHeight;
+    var circles = [];
+    var current_circle = new currentCirle(0, 0);
+
+    var draw = function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < circles.length; i++) {
+            circles[i].move(w, h);
+            circles[i].drawCircle(ctx);
+            var j;
+            for (j = i + 1; j < circles.length; j++) {
+                circles[i].drawLine(ctx, circles[j]);
+            }
+        }
+        if (current_circle.x) {
+            current_circle.drawCircle(ctx);
+            for (var k = 1; k < circles.length; k++) {
+                current_circle.drawLine(ctx, circles[k]);
+            }
+        }
+        requestAnimationFrame(draw);
+    };
+
+    var init = function init(num) {
+        for (var i = 0; i < num; i++) {
+            circles.push(new Circle(Math.random() * w, Math.random() * h));
+        }
+        draw();
+    };
+    window.addEventListener('load', init(60));
+    window.onmousemove = function (e) {
+        e = e || window.event;
+        current_circle.x = e.clientX;
+        current_circle.y = e.clientY;
+    };
+    window.onmouseout = function () {
+        current_circle.x = null;
+        current_circle.y = null;
+    };
+</script>
+</html>
