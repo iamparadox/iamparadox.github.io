@@ -88,7 +88,7 @@
 <meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/17/【前端】我应该要知道的object/create.jpg">
-<meta property="og:updated_time" content="2018-09-26T10:49:33.159Z">
+<meta property="og:updated_time" content="2019-03-28T01:46:13.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】我应该要知道的object">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;Object类型作为JS最最最常用的类型,强大到连Array和Function都隶属于它的分支之一。这一个篇章要说的对象，边界模糊难以捉摸。看似JS的全部(我不认同“万物解释JS这句话”)，又连接着继承、this、引用等问题，简直是万恶之源，还占据着《你不知道的 JS》上册超超超长的篇幅。 字面量 &amp;amp;&amp;amp; 基本类型 &amp;amp;&amp;a">
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,272
+                  1,542
                 </span>
               
 
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  7
                 </span>
               
             </div>
@@ -408,9 +408,9 @@
 <p>我们可以使用defineProperty()方法重置以上属性。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="string">"a"</span> : <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a,<span class="string">"a"</span>,&#123;</span><br><span class="line">    writeable : <span class="literal">true</span>,</span><br><span class="line">    enumerable : <span class="literal">true</span>,</span><br><span class="line">    configurable : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="内置属性"><a href="#内置属性" class="headerlink" title="内置属性"></a>内置属性</h2><ul>
-<li><p>[[Get]] </p>
+<li><p>[[ Get ]]</p>
 </li>
-<li><p>[[Put]] 对象中的赋值操作，但是优先级比</p>
+<li><p>[[ Put ]] 对象中的赋值操作，但是优先级比</p>
 </li>
 <li><p>Getter</p>
 </li>
@@ -443,7 +443,11 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="Object-create-和-new-Object-的区别"><a href="#Object-create-和-new-Object-的区别" class="headerlink" title="Object.create()和 new Object()的区别:"></a>Object.create()和 new Object()的区别:</h4>
+<h4 id="Object-create-和-new-Object-的区别"><a href="#Object-create-和-new-Object-的区别" class="headerlink" title="Object.create()和 new Object()的区别:"></a>Object.create()和 new Object()的区别:</h4><ul>
+<li>Object.create()接收两个参数 param1:object; param2:propertiesObject可选，该参数会生成新创建对象的属性与值，其中属性名称将是新创建对象的属性名称，值将是新创建对象的属性描述符，该参数不能是 undefined,且必须拥有可枚举属性。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype, &#123;</span><br><span class="line">    <span class="comment">// foo会成为所创建对象的数据属性</span></span><br><span class="line">    foo: &#123;</span><br><span class="line">        writable:<span class="literal">true</span>,</span><br><span class="line">        configurable:<span class="literal">true</span>,</span><br><span class="line">        value: <span class="string">"hello"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// bar会成为所创建对象的访问器属性</span></span><br><span class="line">    bar: &#123;</span><br><span class="line">        configurable: <span class="literal">false</span>,</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">10</span> &#125;,</span><br><span class="line">        set: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Setting `o.bar` to"</span>, value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(o);<span class="comment">//&#123;foo:'hello'&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test1 = <span class="built_in">Object</span>.create(<span class="literal">null</span>) ;</span><br><span class="line"><span class="built_in">console</span>.log(test1);<span class="comment">// &#123;&#125; No Properties</span></span><br><span class="line"></span><br><span class="line">因为在bar中设置了configurable 使用set,get方法默认都是不起作用，所以bar值无法赋值或者获取</span><br><span class="line">这里的o对象继承了 <span class="built_in">Object</span>.prototype  <span class="built_in">Object</span>上的原型方法</span><br><span class="line"></span><br><span class="line">我们可以 对象的 __proto__属性，来获取对象原型链上的方法 如：</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o.__proto__);<span class="comment">//&#123;__defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, __lookupSetter__: ƒ, …&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(test1.__proto__);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
     
@@ -571,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -637,12 +641,12 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder"> 共同维护 : 
-     iamparadox  ZephyrLai  
+     iamparadox  
   </span>
 
   

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,javascript基础,反ajax," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="一期一会">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/index.html">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;最近项目接触到需要轮询不断获取数据对当前页面进行数据的更新类似需求。对于页面来说，如果是股票这种需要长期绘制K线这种需求，定期去执行某一个请求无法判断前一个请求是否执行完毕，也容易造成页面任务栈的爆栈，导致页面卡死在原地。过去的老一代程序猿会利用函数防抖以避免连点或者爆栈，websocket的出世可以一定程度上具备节省带宽等优势。 HTTP轮询">
+<meta name="keywords" content="前端,javascript基础,反ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【前端】websocket相关">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/【前端】websocket相关/index.html">
 <meta property="og:site_name" content="一期一会">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;最近项目接触到需要轮询不断获取数据对当前页面进行数据的更新类似需求。对于页面来说，如果是股票这种需要长期绘制K线这种需求，定期去执行某一个请求无法判断前一个请求是否执行完毕，也容易造成页面任务栈的爆栈，导致页面卡死在原地。过去的老一代程序猿会利用函数防抖以避免连点或者爆栈，websocket的出世可以一定程度上具备节省带宽等优势。 HTTP轮询">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-09T01:25:55.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一期一会">
+<meta name="twitter:title" content="【前端】websocket相关">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;最近项目接触到需要轮询不断获取数据对当前页面进行数据的更新类似需求。对于页面来说，如果是股票这种需要长期绘制K线这种需求，定期去执行某一个请求无法判断前一个请求是否执行完毕，也容易造成页面任务栈的爆栈，导致页面卡死在原地。过去的老一代程序猿会利用函数防抖以避免连点或者爆栈，websocket的出世可以一定程度上具备节省带宽等优势。 HTTP轮询">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/11/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/【前端】websocket相关/"/>
 
 
 
 
 
-  <title>归档 | 一期一会</title>
+  <title>【前端】websocket相关 | 一期一会</title>
   
 
 
@@ -142,7 +147,7 @@
     <div class="bg_content">
        <canvas id="canvas"></canvas>
     </div>
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,111 +251,205 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 14 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/【前端】websocket相关/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="[object Object]">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一期一会">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/30/【前端】XMLHttpRequest/" itemprop="url">
-              
-                <span itemprop="name">【前端】XMLHttpRequest</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">【前端】websocket相关</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-30T01:02:33+08:00"
-              content="2018-11-30" >
-          11-30
-        </time>
-      </div>
+        <div class="post-meta">
+         
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-user"></i>
+              </span>
+              <span class="post-meta-item-text">
+                iamparadox
+              </span>
+          </span>
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T14:03:02+08:00">
+                2019-04-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/20/【前端】websocket相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/20/【前端】websocket相关/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  158
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/27/【前端】AJAX相关/" itemprop="url">
-              
-                <span itemprop="name">【前端】AJAX相关</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-27T15:01:33+08:00"
-              content="2018-11-27" >
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>&#160; &#160; &#160; &#160;最近项目接触到需要轮询不断获取数据对当前页面进行数据的更新类似需求。对于页面来说，如果是股票这种需要长期绘制K线这种需求，定期去执行某一个请求无法判断前一个请求是否执行完毕，也容易造成页面任务栈的爆栈，导致页面卡死在原地。过去的老一代程序猿会利用函数防抖以避免连点或者爆栈，websocket的出世可以一定程度上具备节省带宽等优势。</p>
+<h1 id="HTTP轮询"><a href="#HTTP轮询" class="headerlink" title="HTTP轮询"></a>HTTP轮询</h1><h1 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h1><h1 id="流化"><a href="#流化" class="headerlink" title="流化"></a>流化</h1>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/javascript基础/" rel="tag"># javascript基础</a>
+          
+            <a href="/tags/反ajax/" rel="tag"># 反ajax</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/30/【前端】XMLHttpRequest/" rel="next" title="【前端】XMLHttpRequest">
+                <i class="fa fa-chevron-left"></i> 【前端】XMLHttpRequest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/20/【前端】vue踩坑记/" rel="prev" title="【前端】vue踩坑记">
+                【前端】vue踩坑记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      <!--
+       -->
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -358,6 +457,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -378,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -430,6 +549,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP轮询"><span class="nav-number">1.</span> <span class="nav-text">HTTP轮询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长轮询"><span class="nav-number">2.</span> <span class="nav-text">长轮询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流化"><span class="nav-number">3.</span> <span class="nav-text">流化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -577,6 +712,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -623,6 +762,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: '0d178e6a576de5601cb1f6581303b7d502fc1c99',
+            repo: 'iamparadox.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '693f67b1220410dc01533a2775213acf8d686294',
+            
+                client_id: 'de7cddf028f095a8f3d8'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 

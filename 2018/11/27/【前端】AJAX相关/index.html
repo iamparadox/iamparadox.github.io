@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/状态码.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/301.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/11/27/【前端】AJAX相关/limit.jpg">
-<meta property="og:updated_time" content="2018-11-29T17:02:09.654Z">
+<meta property="og:updated_time" content="2019-04-20T06:07:49.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】AJAX相关">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;介于面试经常问到，所以好好整理一下 AJAX 相关的知识。之前有个面试官一直问我前端怎么彻底解决跨域，现在回想起来，前端没有办法彻底解决跨域的啊，还是要通过服务器端去处理的。工作中一直使用 JQ 和 AXIOS 居多，原生部分很薄弱，近来私下学习了proxy 部分，这一块也会细致地补全。为了写这篇把《图解 HTTP》给看完了。比心。 来源：">
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,235
+                  2,307
                 </span>
               
 
@@ -488,7 +488,8 @@
 </ul>
 <h2 id="理论总结"><a href="#理论总结" class="headerlink" title="理论总结:"></a>理论总结:</h2><p>协议部分 TCP/IP 协议占据基础主导地位，引领着 HTTP 的传输步骤。但是在 HTTPS 中，通信建立需要先同 SSL 协议沟通，采用公开密钥加密技术传递加密的算法，但是完成这些步骤后，后面仍然是 TCP/IP 协议。</p>
 <h2 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h2><ul>
-<li>AXIOS中的类型请求是application/json;JQ的类型请求是xxx-www-application，两者在与后端沟通时，需要注意层级问题。</li>
+<li>AXIOS中的类型请求是application/json;JQ的类型请求是xxx-www-application，两者在与后端沟通时，需要注意双方请求类型的需保持一致性。</li>
+<li>在请求到非简单请求譬如option请求的时候，经过实际测试，客户端无法捕获到请求类型，会走服务器端的403错误，所以并不建议服务器端对403报错进行覆盖。</li>
 </ul>
 
       
@@ -618,7 +619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -684,12 +685,12 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder"> 共同维护 : 
-     iamparadox  ZephyrLai  
+     iamparadox  
   </span>
 
   
