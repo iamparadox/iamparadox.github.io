@@ -79,15 +79,20 @@
 
 
 
+<meta name="description" content="ClassES5:1234567891011121314&amp;lt;!-- 函数 1 --&amp;gt;funtion person(name,year)&amp;#123;    this.name = name;    this.year = year;&amp;#125;person.prototype.getHeight = funtion()&amp;#123;    return &apos;180&apos;;&amp;#125;&amp;lt;!--">
 <meta name="keywords" content="前端,javascript基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【前端】我应该要知道的面向对象">
 <meta property="og:url" content="http://yoursite.com/2018/09/01/【前端】我应该要知道的面向对象/index.html">
 <meta property="og:site_name" content="一期一会">
+<meta property="og:description" content="ClassES5:1234567891011121314&amp;lt;!-- 函数 1 --&amp;gt;funtion person(name,year)&amp;#123;    this.name = name;    this.year = year;&amp;#125;person.prototype.getHeight = funtion()&amp;#123;    return &apos;180&apos;;&amp;#125;&amp;lt;!--">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-14T09:16:31.147Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/01/【前端】我应该要知道的面向对象/class-1.jpg">
+<meta property="og:updated_time" content="2019-07-28T12:05:40.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】我应该要知道的面向对象">
+<meta name="twitter:description" content="ClassES5:1234567891011121314&amp;lt;!-- 函数 1 --&amp;gt;funtion person(name,year)&amp;#123;    this.name = name;    this.year = year;&amp;#125;person.prototype.getHeight = funtion()&amp;#123;    return &apos;180&apos;;&amp;#125;&amp;lt;!--">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/01/【前端】我应该要知道的面向对象/class-1.jpg">
 
 
 
@@ -342,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  294
                 </span>
               
 
@@ -379,7 +384,21 @@
       
 
       
-        
+        <h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><h2 id="ES5"><a href="#ES5" class="headerlink" title="ES5:"></a>ES5:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 函数 <span class="number">1</span> --&gt;</span><br><span class="line">funtion person(name,year)&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.year = year;</span><br><span class="line">&#125;</span><br><span class="line">person.prototype.getHeight = funtion()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'180'</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数 <span class="number">1</span> 结束 --&gt;</span><br><span class="line">&lt;!-- 函数 <span class="number">2</span> --&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数 <span class="number">2</span> 结束 --&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="ES6-Class"><a href="#ES6-Class" class="headerlink" title="ES6-Class:"></a>ES6-Class:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 函数 <span class="number">1</span> --&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,year)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line">    getHeight()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'180'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数 <span class="number">1</span> 结束 --&gt;</span><br><span class="line">&lt;!-- 函数 <span class="number">2</span> --&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span>()</span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数 <span class="number">2</span> 结束 --&gt;</span><br></pre></td></tr></table></figure>
+<p>函数 1 展示面向对象的一个实例，由constructor构造函数、prototype 原型链构成：</p>
+<img src="/2018/09/01/【前端】我应该要知道的面向对象/class-1.jpg" title="class-1">
+<p>类中所写的所有方法皆挂载在该类的prototype上,可以用Object.assign()添加多个,同时还默认继承对象的一系列方法。</p>
+<h3 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h3><ul>
+<li><p>ES5中通过prototype定义的方法是可以枚举的，但是Class中内部定义的方法是不可枚举的。<br>Object.keys(person.prototype); // ES5中返回[‘getHeight’] Class中返回[];<br>Object.getOwnPropertyNames(person.prototype); // ES5中返回[‘getHeight’] Class中返回[‘getHeight’];</p>
+</li>
+<li><p>Class的方法属性，是可以用表达式的得到的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> methodName = <span class="string">'getName'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    [methodName]() &#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Class必须要通过new 进行调用，直接执行会报TypeError的错误。</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -482,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -535,6 +563,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Class"><span class="nav-number">1.</span> <span class="nav-text">Class</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5"><span class="nav-number">1.1.</span> <span class="nav-text">ES5:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-Class"><span class="nav-number">1.2.</span> <span class="nav-text">ES6-Class:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同"><span class="nav-number">1.2.1.</span> <span class="nav-text">不同</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -555,6 +599,7 @@
   <span class="author" itemprop="copyrightHolder"> 共同维护 : 
      iamparadox  
   </span>
+  <p>浙ICP备18029488号</p>
 
   
 </div>
