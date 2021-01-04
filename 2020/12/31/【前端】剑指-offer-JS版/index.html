@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="一期一会">
 <meta property="og:description" content="二维数组中的查找在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 示例:输入7,[[1,2,8,9],[2,4,9,12],[4,7,10,13],[6,8,11,15]] 返回值true 一开始会错意 以为条件是是先判断是否从左往右递增，是否从上往下递增">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-02T15:57:58.187Z">
+<meta property="og:updated_time" content="2021-01-04T07:52:56.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【前端】剑指 offer JS版">
 <meta name="twitter:description" content="二维数组中的查找在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 示例:输入7,[[1,2,8,9],[2,4,9,12],[4,7,10,13],[6,8,11,15]] 返回值true 一开始会错意 以为条件是是先判断是否从左往右递增，是否从上往下递增">
@@ -345,7 +345,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  377
+                  468
                 </span>
               
 
@@ -391,7 +391,9 @@
 <h1 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h1><p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceSpace</span>(<span class="params">str</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// write code here</span></span><br><span class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/\s/g</span>,<span class="string">'%20'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>唉今天偷懒了。</p>
-
+<h1 id="从尾到头打印链表"><a href="#从尾到头打印链表" class="headerlink" title="从尾到头打印链表"></a>从尾到头打印链表</h1><p>题目描述<br>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</p>
+<p>输入<br>{67,0,24,58}<br>返回值<br>[58,24,0,67]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*function ListNode(x)&#123;</span></span><br><span class="line"><span class="comment">    this.val = x;</span></span><br><span class="line"><span class="comment">    this.next = null;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printListFromTailToHead</span>(<span class="params">head</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// write code here</span></span><br><span class="line">    <span class="keyword">let</span> arr = [],listNode = head;</span><br><span class="line">    <span class="keyword">while</span>(listNode != <span class="literal">null</span>)&#123;</span><br><span class="line">        arr.unshift(listNode.val)</span><br><span class="line">        listNode = listNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -565,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">1.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#替换空格"><span class="nav-number">2.</span> <span class="nav-text">替换空格</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">1.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#替换空格"><span class="nav-number">2.</span> <span class="nav-text">替换空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从尾到头打印链表"><span class="nav-number">3.</span> <span class="nav-text">从尾到头打印链表</span></a></li></ol></div>
             
 
           </div>
